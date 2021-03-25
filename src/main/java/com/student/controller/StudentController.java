@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.student.modal.StudentDto;
 import com.student.service.IStudentService;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -26,6 +27,11 @@ public class StudentController {
 	@GetMapping("/{id}")
 	public Mono<StudentDto> getStudentDetails(@PathVariable Long id){
 		return studentService.getStudentDetails(id);
+	}
+	
+	@GetMapping("/")
+	public Flux<StudentDto> getAllStudentDetails(){
+		return studentService.getAllStudentDetails();
 	}
 
 }
